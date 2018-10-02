@@ -1,7 +1,20 @@
 - name: Install packages
-  apt: name={{item}}
-  with_items:
+  apt:
+    name: "{{ packages }}"
+    state: latest
+  vars:
+    packages:
     - htop
     - mc
     - curl
     - vim
+
+- name: Nginx package
+  apt:
+    name: "{{ nginx_paks }}"
+    state: present
+  vars:
+    nginx_paks:
+    - nginx
+    - nginx-common
+    - nginx-core
